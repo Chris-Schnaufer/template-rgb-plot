@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Running pylint checks
     steps:
-      - name: Check python
+      - name: Current python version
         run: python3 --version || echo python3 not installed
       - name: Install Python 3.7
         run: sudo apt-get install -y --no-install-recommends python3.7 python3-pip && sudo ln -sfn /usr/bin/python3.7 /usr/bin/python3
@@ -36,9 +36,13 @@ jobs:
       - name: Finding files
         run: find . -type f -name "*.py" > action_pylint_files.txt
         id: find-python-files
+      - name: Update apt
+        shell: bash
+        run: 'sudo apt-get update'
+        id: update-apt
       - name: Install system requirements
         shell: bash
-        run: 'sudo apt-get update && sudo apt-get install -y python3-gdal gdal-bin libgdal-dev gcc g++ python3.7-dev'
+        run: 'sudo apt-get install -y python3-gdal gdal-bin libgdal-dev gcc g++ python3.7-dev'
         id: install-system-reqs
       - name: Install Python requirements
         shell: bash
