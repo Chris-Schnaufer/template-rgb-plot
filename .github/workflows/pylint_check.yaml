@@ -35,7 +35,7 @@ jobs:
         run: find . -type f -name "*.py" > action_pylint_files.txt
         id: find-python-files
       - name: Clear out old installations
-        run: 'sudo python3 -m pip uninstall -y numpy && sudo apt remove -y python3-numpy'
+        run: 'python3 -m pip uninstall -y numpy && sudo apt remove -y python3-numpy'
         id: clean-old
       - name: Install system requirements
         shell: bash
