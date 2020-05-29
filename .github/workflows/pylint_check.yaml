@@ -36,19 +36,13 @@ jobs:
       - name: Finding files
         run: find . -type f -name "*.py" > action_pylint_files.txt
         id: find-python-files
-      - name: apt update workaround
-        run: 'sudo apt-get install --reinstall python3-apt'
-      - name: Update apt
-        shell: bash
-        run: 'sudo apt-get update'
-        id: update-apt
       - name: Install system requirements
         shell: bash
         run: 'sudo apt-get install -y python3-gdal gdal-bin libgdal-dev gcc g++ python3.7-dev'
         id: install-system-reqs
       - name: Install Python requirements
         shell: bash
-        run: 'sudo python3 -m pip install --no-cache-dir wheel && sudo python3 -m pip install --no-cache-dir numpy pygdal==2.2.3.5'
+        run: 'python3 -m pip install --no-cache-dir wheel && sudo python3 -m pip install --no-cache-dir numpy pygdal==2.2.3.5'
         id: install-python-reqs
       - name: Run action pylint script
         shell: bash
