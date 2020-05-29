@@ -44,7 +44,7 @@ jobs:
         id: install-system-reqs
       - name: Install Python numpy
         shell: bash
-        run: 'sudo python3 -m pip remove numpy && sudo python3 -m pip install --no-cache-dir numpy'
+        run: 'sudo python3 -m pip uninstall numpy && sudo python3 -m pip install --no-cache-dir numpy'
         id: install-python-numpy
       - name: Install Python pygdal
         shell: bash
