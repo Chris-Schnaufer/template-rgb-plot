@@ -36,6 +36,8 @@ jobs:
       - name: Finding files
         run: find . -type f -name "*.py" > action_pylint_files.txt
         id: find-python-files
+      - name: apt update workaround
+        run: 'sudo apt-get install --reinstall python3-apt'
       - name: Update apt
         shell: bash
         run: 'sudo apt-get update'
